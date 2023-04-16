@@ -20,6 +20,7 @@ class ClassRoom
         private int $numberOfVacancies,
         private ShiftEnum $shift,
         private string $level,
+        private string $academicYear,
         private string $localization = '',
         private int $vacanciesOccupied = 0,
         private ClassRoomStatusEnum $status = ClassRoomStatusEnum::OPEN,
@@ -121,6 +122,7 @@ class ClassRoom
             'shift' => $this->shift->value,
             'localization' => $this->localization,
             'level' => $this->level,
+            'academic_year' => $this->academicYear,
         ];
     }
 

@@ -65,7 +65,7 @@ class ClassRoomRepository implements ClassRoomRepositoryInterface
     {
         $classRom = ClassRoomModel::query()
             ->take($pagination->limit)
-            ->offset($pagination->offset)
+            ->offset($pagination->getOffset())
             ->orderBy($pagination->sortField, $pagination->sort->value);
 
         $classRomCount = ClassRoomModel::query();
@@ -92,5 +92,13 @@ class ClassRoomRepository implements ClassRoomRepositoryInterface
         $result->data = $classRom->get()->toArray();
 
         return $result;
+    }
+
+    public function getYearsAcademic(): array
+    { 
+        return ClassRoomModel::query()
+            ->distinct()
+            ->get('academic_year')
+            ->toArray();
     }
 }

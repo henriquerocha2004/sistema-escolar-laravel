@@ -26,6 +26,7 @@ class ClassRoomActions
         } catch (Throwable $throwable) {
             Log::error('failed to create classroom', [
                 'message' => $throwable->getMessage(),
+                'context' => $throwable,
             ]);
 
             $outPut->error = true;
@@ -44,6 +45,7 @@ class ClassRoomActions
         } catch (Throwable $throwable) {
             Log::error('failed to create classroom', [
                 'message' => $throwable->getMessage(),
+                'context' => $throwable,
             ]);
             $outPut->error = true;
             $outPut->message = 'failed to updated classroom';
@@ -62,6 +64,7 @@ class ClassRoomActions
         } catch (Throwable $throwable) {
             Log::error('failed to create classroom', [
                 'message' => $throwable->getMessage(),
+                'context' => $throwable,
             ]);
             $outPut->error = true;
             $outPut->message = 'failed to deleted classroom';
@@ -80,6 +83,7 @@ class ClassRoomActions
         } catch (Throwable $throwable) {
             Log::error('failed to create classroom', [
                 'message' => $throwable->getMessage(),
+                'context' => $throwable,
             ]);
             $outPut->error = true;
             $outPut->message = 'failed to retrieve classroom';
@@ -98,9 +102,30 @@ class ClassRoomActions
         } catch (Throwable $throwable) {
             Log::error('failed to create classroom', [
                 'message' => $throwable->getMessage(),
+                'context' => $throwable,
             ]);
             $outPut->error = true;
             $outPut->message = 'failed to retrieve classrooms';
+        }
+
+        return $outPut;
+    }
+
+    public function getYearsAcademic(): OutputDto
+    {
+        try {
+            $outPut = new OutputDto();
+            $result = $this->repository->getYearsAcademic();
+            $outPut->status = 'OK';
+            $outPut->data = $result;
+        } catch (Throwable $throwable) {
+            Log::error('failed to get Years Academic', [
+                'message' => $throwable->getMessage(),
+                'context' => $throwable,
+            ]);
+
+            $outPut->error = true;
+            $outPut->message = 'failed to get Years Academic';
         }
 
         return $outPut;

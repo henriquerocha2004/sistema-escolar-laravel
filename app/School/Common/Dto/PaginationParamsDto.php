@@ -7,7 +7,7 @@ use App\School\Common\Enums\PaginationSortEnum;
 class PaginationParamsDto
 {
     public int $limit = 10;
-    public int $offset = 0;
+    private int $offset = 0;
     public PaginationSortEnum $sort = PaginationSortEnum::ASC;
     public string $sortField = 'id';
     public string $search = '';
@@ -16,12 +16,24 @@ class PaginationParamsDto
 
     public function addColumnSearch(array $dataColumn): void
     {
-        foreach ($dataColumn as $data) {
-            $columnSearchDto = new SearchColumnsParamsDto();
-            $columnSearchDto->column = $data['column'];
-            $columnSearchDto->value = $data['value'];
-            $this->columnSearch[] = $columnSearchDto;
+        $columnSearchDto = new SearchColumnsParamsDto();
+        $columnSearchDto->column = $dataColumn['column'];
+        $columnSearchDto->value = $dataColumn['value'];
+        $this->columnSearch[] = $columnSearchDto;
+    }
+
+    public function setPage(int $page): void
+    {
+        if (empty($page)) {
+            return;
         }
+
+        $this->offset = ($page * $this->limit) - $this->limit;
+    }
+
+    public function getOffset(): int
+    {
+        return $this->offset;
     }
 
     public function hasColumnSearchParams(): bool

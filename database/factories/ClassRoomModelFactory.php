@@ -27,8 +27,9 @@ class ClassRoomModelFactory extends Factory
             'level' => '2 ANO',
             'localization' => null,
             'vacancies_occupied' => $this->faker->randomNumber(1),
-            'status' =>  $this->faker->randomElement(ClassRoomStatusEnum::all()),
+            'status' =>  $this->faker->randomElement([ClassRoomStatusEnum::OPEN->value, ClassRoomStatusEnum::CLOSED->value]),
             'open_date' => date('Y-m-d H:i:s'),
+            'academic_year' => '2023',
         ];
     }
 }

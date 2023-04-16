@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\School\Secretary\Enums\ClassRoomStatusEnum;
+use App\School\Secretary\Enums\ShiftEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,6 +29,11 @@ class ClassRoomModel extends Model
 
     protected $table = 'classroom';
 
+    protected $casts = [
+        'status' => ClassRoomStatusEnum::class,
+        'shift' => ShiftEnum::class,
+    ];
+
     protected $fillable = [
         'id',
         'identification',
@@ -42,5 +49,6 @@ class ClassRoomModel extends Model
     protected $hidden = [
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 }

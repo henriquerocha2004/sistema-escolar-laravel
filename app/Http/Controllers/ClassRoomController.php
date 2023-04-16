@@ -8,6 +8,6 @@ class ClassRoomController extends Controller
 {
     public function index(): View
     {
-        return view('livewire.class-room.index')
+        return view('livewire.class-room.index');
     }
 }

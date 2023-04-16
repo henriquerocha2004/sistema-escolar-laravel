@@ -1,5 +1,36 @@
 @section('content')
-    <div>
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Default</button>
-    </div>
+    <main class="h-full overflow-y-auto" x-data="classRoomData()">
+        <!-- Remove everything INSIDE this div to a really blank page -->
+        <div class="container grid px-6 mx-auto">
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                Turmas
+            </h2>
+            <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+                <div class="w-full overflow-x-auto">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                          <livewire:class-room.datatable/>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <div>
+        <livewire:class-room.create>
+     </div>   
+     
+    </main>
+
+    
 @endsection
+
+@push('scripts')
+    <script>
+        function classRoomData() {
+            return {
+                showCreateModal: false,
+                toogleShowCreateModal() {
+                    this.showCreateModal = !this.showCreateModal
+                }
+            }
+        }
+    </script>
+@endpush

@@ -17,6 +17,7 @@ class ClassRoomDto
     public string $shift = '';
     public string $level = '';
     public string $localization = '';
+    public string $academicYear = 0;
 
     /**
      * @throws ClassRoomException
@@ -27,7 +28,8 @@ class ClassRoomDto
             $this->identification,
             $this->numberOfVacancies,
             ShiftEnum::from($this->shift),
-            $this->level
+            $this->level,
+            $this->academicYear
         );
 
         if ($this->status) {

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     public function up(): void
     {
         Schema::create('classroom', function (Blueprint $table) {
@@ -18,6 +17,7 @@ return new class extends Migration
             $table->integer('vacancies_occupied')->nullable();
             $table->string('status');
             $table->dateTime('open_date');
+            $table->string('academic_year');
             $table->softDeletes();
             $table->timestamps();
         });

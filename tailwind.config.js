@@ -9,6 +9,10 @@ module.exports = {
   theme: {
     extend: {},
   },
+  safelist: [
+    'bg-red-500',
+    'bg-green-500'
+  ],
   plugins: [
       require('flowbite/plugin')
   ],

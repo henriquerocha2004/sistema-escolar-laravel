@@ -13,4 +13,5 @@ interface ClassRoomRepositoryInterface
     public function delete(string $id): void;
     public function findById(string $id): ClassRoom|null;
     public function findAll(PaginationParamsDto $pagination): PaginationResultDto;
+    public function getYearsAcademic(): array;
 }
